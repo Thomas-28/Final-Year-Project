@@ -1,0 +1,47 @@
+
+#Equations of May model 
+
+N' = R*N *(1-(C/R)*N)*((N-mu)/(N+nu)) - ((alpha*N*P)/(beta+N))
+P' = s*P*(1-((q*P)/(N+epsilon)))
+
+# Initial States
+init N=0.6, P=0.001,
+
+# Parameters
+par R = 4
+par q = 220
+s = 0.85
+C = 0.219
+beta = 0.3
+alpha = 505
+mu = 0.03
+nu = 0.003
+epsilon = 0.03
+
+#integration 
+@ total=250, 
+@ Dt=0.01
+
+# discretization of periodic orbits
+@ Ntst=70, 
+
+# maximum number of steps taken along any branch
+@ Nmax=280, NPr = 70
+
+# max min and step size
+@ Dsmin=1e-4, Ds=-0.01, Dsmax=0.05, 
+
+# main parameter min and max
+@ ParMin=0, ParMax=4, 
+
+# solution norm min and max
+@ NormMin=0, NormMax=5000,
+
+#other AUTO parameters 
+@ epsu=1e-7, epsl=1e-7, epss=1e-7
+
+# XPP graphical options
+@ axes=2, xplot=N, yplot=P
+@ xlo=0, xhi=50, ylo=0, yhi=0.4
+
+done 
